@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amresh Kumar — Senior Technical Writer</title>
 
-<!-- Google Analytics — replace G-XXXXXXXXXX (both places) with your real Measurement ID from analytics.google.com -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F31M12L5LJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-F31M12L5LJ');
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -264,10 +264,16 @@
   /* Expertise grid */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
+  }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
   }
   .card {
     background: var(--surface);
@@ -364,19 +370,6 @@
     text-transform: lowercase;
     padding-top: 0.15rem;
   }
-  .proj-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.9rem;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.76rem;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-  }
-  .proj-link:hover { border-bottom-color: var(--accent); }
-
   /* Skills */
   .skill-block { margin-bottom: 1.6rem; }
   .skill-block h4 {
@@ -727,7 +720,7 @@
           <div class="proj-row"><div class="k">role</div><div>Sole technical writer on the team, owning documentation end to end across hardware and software.</div></div>
           <div class="proj-row"><div class="k">stack</div><div>RoboHelp, XML editor</div></div>
           <div class="proj-row"><div class="k">outcome</div><div>Delivers documentation for a platform whose underwater vision technology has been recognized by TIME Magazine as one of the best inventions of 2023.</div></div>
-          <a class="proj-link" href="https://www.tidalx.ai/en" target="_blank" rel="noopener">tidalx.ai ↗</a>
+          <div class="proj-row"><div class="k">context</div><div>Tidal was originally incubated inside Alphabet's X, the moonshot factory, before spinning out. Its cameras and AI models cover biomass estimation, sea lice detection, fish welfare monitoring, and autonomous feeding — each with its own documentation requirements.</div></div>
         </div>
       </div>
 
@@ -741,7 +734,7 @@
           <div class="proj-row"><div class="k">role</div><div>Senior Technical Author, part of an 8-person writing team, managing multiple concurrent projects.</div></div>
           <div class="proj-row"><div class="k">stack</div><div>MadCap Flare, MadCap Capture, Jira</div></div>
           <div class="proj-row"><div class="k">outcome</div><div>Sustained consistent, accurate documentation across multiple concurrent government software releases over a 6.5-year engagement.</div></div>
-          <a class="proj-link" href="https://www.necsws.com/" target="_blank" rel="noopener">necsws.com ↗</a>
+          <div class="proj-row"><div class="k">context</div><div>NEC Software Solutions builds software used by hundreds of public-sector organizations across the UK, spanning government, housing, healthcare, and public safety — meaning the documentation had to work for both IT administrators and frontline case workers.</div></div>
         </div>
       </div>
 
@@ -768,7 +761,7 @@
           <div class="proj-row"><div class="k">role</div><div>Technical Document Coordinator, based on-site in Derby, UK for one year, within a combined engineering and documentation team of 40+.</div></div>
           <div class="proj-row"><div class="k">stack</div><div>Oxygen XML, Teamcenter</div></div>
           <div class="proj-row"><div class="k">outcome</div><div>Contributed to a program that entered passenger service on schedule in 2017 — notable in an industry where rail delivery delays are the norm.</div></div>
-          <a class="proj-link" href="https://www.cyient.com/hubfs/FY_19_Revamp_Assets_Website/Resource%20Center/Case-Study/Rail-transportation/TRA-Case-Study-Crossrail-0219.pdf" target="_blank" rel="noopener">Cyient × Bombardier case study (PDF) ↗</a>
+          <div class="proj-row"><div class="k">context</div><div>Crossrail was later named the Elizabeth line. Cyient's documentation work sat alongside test specifications, test reports, and verification/validation plans, within a combined Bombardier-Cyient team spanning Derby, UK and Hyderabad, India that ran around the clock to hold the schedule.</div></div>
         </div>
       </div>
 
@@ -782,7 +775,6 @@
           <div class="proj-row"><div class="k">role</div><div>One of 6 team members maintaining the site's content end to end.</div></div>
           <div class="proj-row"><div class="k">stack</div><div>Adobe Dreamweaver (HTML), Adobe Illustrator (screen graphics)</div></div>
           <div class="proj-row"><div class="k">outcome</div><div>Kept customer-facing support content accurate and current for an active aircraft support program.</div></div>
-          <a class="proj-link" href="https://bombardier.com/en/support/enhance-your-aircraft/smart-link-plus" target="_blank" rel="noopener">bombardier.com ↗</a>
         </div>
       </div>
     </section>
