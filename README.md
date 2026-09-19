@@ -26,4 +26,4 @@ The portfolio covers:
 
 - Email: amresh3306@gmail.com
 - Phone: +91 8105988899
-- LinkedIn: [linkedin.com/in/amresh-kumar](#) <!-- replace with your real profile URL -->
+- LinkedIn: [https://www.linkedin.com/in/amresh3306/](#) <!-- replace with your real profile URL -->
