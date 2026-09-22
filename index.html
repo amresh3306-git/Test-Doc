@@ -515,6 +515,32 @@
     outline: 2px solid var(--accent-2);
     outline-offset: 2px;
   }
+
+  /* Email copy toast */
+  .email-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 0.65rem 1.1rem;
+    border-radius: 4px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    box-shadow: 0 4px 16px var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 999;
+    white-space: nowrap;
+  }
+  .email-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .email-toast .check { color: var(--accent-2); margin-right: 0.4rem; }
 </style>
 </head>
 <body>
@@ -545,7 +571,7 @@
     <div class="sidebar-foot">
       Notice period: immediate<br>
       Based: Aurangabad, Bihar (Remote)<br>
-      <a href="mailto:amresh3306@gmail.com">amresh3306@gmail.com</a>
+      <a href="mailto:amresh3306@gmail.com" onclick="copyEmail(event)">amresh3306@gmail.com</a>
     </div>
   </nav>
 
@@ -569,7 +595,7 @@
       </div>
 
       <div class="hero-actions">
-        <a class="btn primary" href="mailto:amresh3306@gmail.com">Email me</a>
+        <a class="btn primary" href="mailto:amresh3306@gmail.com" onclick="copyEmail(event)">Email me</a>
         <a class="btn" href="https://www.linkedin.com/in/amresh3306/" target="_blank" rel="noopener">View LinkedIn</a>
         <a class="btn" href="tel:+918105988899">+91 8105988899</a>
       </div>
@@ -925,7 +951,7 @@
       <div class="contact-grid">
         <div class="contact-item">
           <div class="k">email</div>
-          <div class="v"><a href="mailto:amresh3306@gmail.com">amresh3306@gmail.com</a></div>
+          <div class="v"><a href="mailto:amresh3306@gmail.com" onclick="copyEmail(event)">amresh3306@gmail.com</a></div>
         </div>
         <div class="contact-item">
           <div class="k">phone</div>
@@ -956,6 +982,51 @@
 </div>
 
 <script>
+  function showToast(msg) {
+    var toast = document.getElementById('emailToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'emailToast';
+      toast.className = 'email-toast';
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML = '<span class="check">&#10003;</span>' + msg;
+    toast.classList.add('show');
+    clearTimeout(window._emailToastTimer);
+    window._emailToastTimer = setTimeout(function () {
+      toast.classList.remove('show');
+    }, 2600);
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) { /* no-op */ }
+    document.body.removeChild(ta);
+  }
+
+  function copyEmail(evt) {
+    var email = 'amresh3306@gmail.com';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(function () {
+        showToast(email + ' copied to clipboard');
+      }).catch(function () {
+        fallbackCopy(email);
+        showToast(email + ' copied to clipboard');
+      });
+    } else {
+      fallbackCopy(email);
+      showToast(email + ' copied to clipboard');
+    }
+    // Not calling preventDefault: if the visitor has a mail client configured,
+    // the mailto: link will still try to open it at the same time.
+  }
+
   var toggle = document.getElementById('navToggle');
   var sidebar = document.getElementById('sidebar');
   if (toggle) {
